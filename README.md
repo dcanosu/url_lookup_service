@@ -1,4 +1,4 @@
-![Python CI](https://github.com/dcanosu/https://github.com/dcanosu/url_lookup_service/actions/workflows/main.yml/badge.svg)
+![Python CI](https://github.com/dcanosu/url_lookup_service/actions/workflows/main.yml/badge.svg)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Security: Bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 
