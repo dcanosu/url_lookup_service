@@ -11,7 +11,7 @@ MALWARE_DATABASE = frozenset(
         "malware.com/bad-file.exe",
         "evil-site.net/phishing/login.html",
         "unsafe.biz:8080/virus",
-        "mypagina.com",
+        "myfavoriteapp.com",
     }
 )
 

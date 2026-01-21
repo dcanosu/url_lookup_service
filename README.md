@@ -6,6 +6,7 @@
 
 A lightweight Flask service that checks if a requested URL is present in a malware database. This service is designed to be used by an HTTP proxy to block malicious traffic.
 
+![alt text](image.png)
 
 ## 🛠️ DevOps & Quality Stack
 
