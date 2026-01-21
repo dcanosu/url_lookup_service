@@ -22,7 +22,7 @@ def test_health_endpoint(client):
     [
         ("google.com/search", True, "ALLOW"),  # Known safe URL
         ("malware.com/bad-file.exe", False, "BLOCK"),  # Exact match malware
-        ("mypagina.com/anything/else", False, "BLOCK"),  # Prefix match malware
+        ("myfavoriteapp.com/anything/else", False, "BLOCK"),  # Prefix match malware
         ("unsafe.biz:8080/virus", False, "BLOCK"),  # Malware with port
     ],
 )
