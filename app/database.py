@@ -1,29 +1,38 @@
-# We store "hostname/path" strings here
-# In a real app, this might be a Redis cache or a SQL database
-MALWARE_DATABASE = {
-    "malware.com/bad-file.exe",
-    "evil-site.net/phishing/login.html",
-    "unsafe.biz:8080/virus",
-    "mypagina.com",
-}
+import logging
+
+# Configure logging to track lookups and potential matches
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Using a frozenset for immutability and O(1) average lookup performance.
+# In production, replace with a Redis Bloom Filter or a Trie structure.
+MALWARE_DATABASE = frozenset(
+    {
+        "malware.com/bad-file.exe",
+        "evil-site.net/phishing/login.html",
+        "unsafe.biz:8080/virus",
+        "mypagina.com",
+    }
+)
 
 
 def is_url_malicious(hostname: str, path: str) -> bool:
     """
-    Combines hostname and path to check against our known malware list.
+    Evaluates if a given URL is malicious based on prefix-matching.
     """
-    # Standardize the lookup string
-    # lookup_url = f"{hostname}/{path}"
-    hostname = hostname.strip("/")
-    path = path.strip("/")
+    # Normalization: Clean slashes and convert to lowercase
+    clean_hostname = hostname.strip("/").lower()
+    clean_path = path.strip("/").lower()
 
-    # full_url = f"{hostname}/{path}".strip("/")
-    full_url = f"{hostname}/{path}" if path else hostname
+    # URL Construction: Join parts ensuring a consistent format
+    full_url = f"{clean_hostname}/{clean_path}" if clean_path else clean_hostname
 
-    # Check if it exists in our set
-    # return lookup_url in MALWARE_DATABASE
-    # Search if any prefix of the DB match with the start of the url
-    for malware_url in MALWARE_DATABASE:
-        if full_url.startswith(malware_url):
+    # Prefix Matching: Check if URL starts with any blacklisted entry.
+    # Note: For high-volume (1M+), a Trie would be more efficient.
+    for malware_prefix in MALWARE_DATABASE:
+        if full_url.startswith(malware_prefix.lower()):
+            logger.warning(f"Malware detected: {full_url}")
             return True
+
+    logger.info(f"URL allowed: {full_url}")
     return False

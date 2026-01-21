@@ -28,8 +28,20 @@ python3 -m app.main
 ```bash
 python3 -m pytest
 ```
+## Design Decisions & Best Practices
+
+- **Security First:** The lookup logic uses **Prefix Matching**. This ensures that blocking a root domain effectively blocks all subsequent paths and resources.
+- **Input Sanitization:** All incoming requests are normalized (lowercased and stripped) to prevent common evasion tactics.
+- **Performance:** For Part 1, we utilize an in-memory set. While the current prefix-search is $O(N)$, for Part 2 (Scale), I recommend migrating to a **Trie (Prefix Tree)** or **Redis with Scan** to maintain constant-time performance.
+- **Observability:** Integrated Python's `logging` module to track blocked attempts, facilitating integration with SIEM tools or ELK stacks.
 
 
+### Key Features
+- **Health Check Endpoint:** Includes `/health` for container orchestration (Liveness/Readiness probes).
+- **Graceful Error Handling:** Standardized JSON error responses.
+- **Configurable Environment:** Support for dynamic port assignment via environment variables.
+- **Structured Logging:** Ready for log aggregation services (like ELK or CloudWatch).
 pip install flake8 black
 pip install bandit
 bandit -r app/
+python3 -m pip install pre-commit
