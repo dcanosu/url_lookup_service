@@ -1,7 +1,20 @@
-![Python CI](https://github.com/USUARIO/REPO/actions/workflows/main.yml/badge.svg)
+![Python CI](https://github.com/dcanosu/https://github.com/dcanosu/url_lookup_service/actions/workflows/main.yml/badge.svg)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Security: Bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+
 # URL Lookup Service
 
 A lightweight Flask service that checks if a requested URL is present in a malware database. This service is designed to be used by an HTTP proxy to block malicious traffic.
+
+
+## 🛠️ DevOps & Quality Stack
+
+This project follows a professional **Continuous Integration** (CI) and **Quality Assurance** (QA) workflow:
+
+* **Linter & Formatter:** `Black` and `Flake8` to ensure PEP8 compliance and clean code.
+* **Security (SAST):** `Bandit` for static application security testing to detect common vulnerabilities.
+* **Git Hooks:** `Pre-commit` hooks to prevent committing code that doesn't meet quality or security standards.
+
 
 ## Project Structure
 - `app/`: Contains the Flask application logic and the malware database.
@@ -20,6 +33,7 @@ From the project root directory, create a virtual environment and install depend
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
+python3 -m pre_commit install
 ```
 ### 3. Running the Service
 ```bash
