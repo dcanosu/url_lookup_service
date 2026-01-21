@@ -1,3 +1,4 @@
+![Python CI](https://github.com/USUARIO/REPO/actions/workflows/main.yml/badge.svg)
 # URL Lookup Service
 
 A lightweight Flask service that checks if a requested URL is present in a malware database. This service is designed to be used by an HTTP proxy to block malicious traffic.
