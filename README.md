@@ -33,7 +33,6 @@ From the project root directory, create a virtual environment and install depend
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
-python3 -m pre_commit install
 ```
 ### 3. Running the Service
 ```bash
