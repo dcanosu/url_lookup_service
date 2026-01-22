@@ -1,6 +1,7 @@
 # Production
 Flask==3.0.0
 gunicorn==21.2.0
+redis
 
 # Development and Quality
 pytest==7.4.0
