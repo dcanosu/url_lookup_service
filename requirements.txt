@@ -1,11 +1,29 @@
-# Production
+# ==========================================
+# Production Dependencies
+# ==========================================
+# Lightweight WSGI web framework for the app
 Flask==3.0.0
+
+# Production-grade WSGI HTTP Server for UNIX
 gunicorn==21.2.0
+
+# In-memory data structure store, used as database/cache
 redis
 
-# Development and Quality
+# ==========================================
+# Development and Quality Tools
+# ==========================================
+# Framework for running unit and integration tests
 pytest==7.4.0
+
+# The uncompromising code formatter (ensures consistent style)
 black==23.3.0
+
+# Linter that checks for syntax errors and PEP 8 style violations
 flake8==6.0.0
+
+# Manages git hooks to run checks (like linting) before every commit
 pre-commit==3.3.3
+
+# Security tool that finds common vulnerabilities in Python code
 bandit==1.7.5

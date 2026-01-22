@@ -24,13 +24,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install flake8 black pytest # Aseguramos que las herramientas de calidad estén
 
     - name: Lint with flake8
       run: |
-        # Paramos el build si hay errores de Python o sintaxis
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # Aviso de salida si hay errores de estilo (opcional, pero profesional)
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
 
     - name: Run Tests with Pytest
